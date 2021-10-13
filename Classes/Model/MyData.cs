@@ -254,7 +254,7 @@ namespace MagentaSoft.Classes.Model
                 return ("03ff" + hexTotalLength + "820A0000" + hexLength + "746578742F7663617264").ToUpper();
             }
 
-            return "";
+            
         }
         private string GetBeginUrl(int urlLength, string type)
         {

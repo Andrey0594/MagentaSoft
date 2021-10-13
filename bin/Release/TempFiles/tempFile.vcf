@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:Magenta
+FN;CHARSET=UTF-8:Александр Фатин
+N;CHARSET=UTF-8:Александр Фатин
+ORG;CHARSET=UTF-8:ОПУС ТД
+TITLE;CHARSET=UTF-8:Директор филиала
+ADR;TYPE=dom,work;CHARSET=UTF-8:;;105064, г. Москва, Нижний Сусальный пер., д. 5, стр. 5А, эт. 1, пом. 1, ком. 13;;;;
+TEL;TYPE=work:+79618719287
+EMAIL;TYPE=INTERNET,PREF:Aleksandr.Fatin@bintg.com
+URL;type=HOME;CHARSET=UTF-8:https://opus.ru/
+X-SOCIALPROFILE;type=Instagram;x-user=@opus.2.0:https://instagram.com/opus.2.0/
+IMPP;X-SERVICE-TYPE=Skype:skype:afatin@opus.ru
+X-SOCIALPROFILE;type=whatsup;x-user=@79618719287:https://wa.me/79618719287
+END:VCARD

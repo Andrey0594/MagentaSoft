@@ -18,3 +18,5 @@ C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\Mage
 C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\MagentaSoft.csproj.CopyComplete
 C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\MagentaSoft.exe
 C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\MagentaSoft.pdb
+C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\MagentaSoft.AddDeviceForm.resources
+C:\Работа\Приложения\2021\MagentaSoft\MagentaSoft\obj\Debug\MagentaSoft.InfoForm.resources

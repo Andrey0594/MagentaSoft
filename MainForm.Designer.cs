@@ -37,34 +37,32 @@
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.UrlContainer = new System.Windows.Forms.SplitContainer();
             this.UrlDGView = new Telerik.WinControls.UI.RadGridView();
+            this.ParametrsDGView = new Telerik.WinControls.UI.RadGridView();
+            this.VcfTBox = new System.Windows.Forms.RichTextBox();
             this.SizeStrip = new System.Windows.Forms.StatusStrip();
-            this.UrlSizeLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UrlSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
-            this.VCardSizeLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.VCardSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.SumSizeLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.SumSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.MaxSizeLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.MaxSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LogTBox = new System.Windows.Forms.RichTextBox();
+            this.SettingsGBox = new System.Windows.Forms.GroupBox();
+            this.WriteBtn = new System.Windows.Forms.Button();
+            this.FormatBtn = new System.Windows.Forms.Button();
+            this.DataSettingsGBox = new System.Windows.Forms.GroupBox();
+            this.CardBeforeUrl = new System.Windows.Forms.RadioButton();
+            this.UrlBeforeCardBtn = new System.Windows.Forms.RadioButton();
+            this.OnlyCardBtn = new System.Windows.Forms.RadioButton();
+            this.OnlyUrlBtn = new System.Windows.Forms.RadioButton();
+            this.WriteSettingsGBox = new System.Windows.Forms.GroupBox();
+            this.AutoincrementChBox = new System.Windows.Forms.CheckBox();
+            this.CheckAfterWriteChBox = new System.Windows.Forms.CheckBox();
+            this.AuthomaticWriteChBox = new System.Windows.Forms.CheckBox();
             this.StatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFileItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearDbItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.VcfTBox = new System.Windows.Forms.RichTextBox();
-            this.ParametrsDGView = new Telerik.WinControls.UI.RadGridView();
-            this.SettingsGBox = new System.Windows.Forms.GroupBox();
-            this.WriteSettingsGBox = new System.Windows.Forms.GroupBox();
-            this.AuthomaticWriteChBox = new System.Windows.Forms.CheckBox();
-            this.CheckAfterWriteChBox = new System.Windows.Forms.CheckBox();
-            this.AutoincrementChBox = new System.Windows.Forms.CheckBox();
-            this.DataSettingsGBox = new System.Windows.Forms.GroupBox();
-            this.OnlyUrlBtn = new System.Windows.Forms.RadioButton();
-            this.OnlyCardBtn = new System.Windows.Forms.RadioButton();
-            this.UrlBeforeCardBtn = new System.Windows.Forms.RadioButton();
-            this.CardBeforeUrl = new System.Windows.Forms.RadioButton();
-            this.FormatBtn = new System.Windows.Forms.Button();
-            this.WriteBtn = new System.Windows.Forms.Button();
-            this.LogTBox = new System.Windows.Forms.RichTextBox();
+            this.AddCardPanel = new System.Windows.Forms.Panel();
+            this.CloseBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
@@ -76,12 +74,13 @@
             this.UrlContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView.MasterTemplate)).BeginInit();
-            this.SizeStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView.MasterTemplate)).BeginInit();
+            this.SizeStrip.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
-            this.WriteSettingsGBox.SuspendLayout();
             this.DataSettingsGBox.SuspendLayout();
+            this.WriteSettingsGBox.SuspendLayout();
+            this.AddCardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -127,9 +126,11 @@
             // 
             // UrlContainer.Panel2
             // 
+            this.UrlContainer.Panel2.Controls.Add(this.AddCardPanel);
             this.UrlContainer.Panel2.Controls.Add(this.ParametrsDGView);
             this.UrlContainer.Panel2.Controls.Add(this.VcfTBox);
             this.UrlContainer.Panel2.Controls.Add(this.SizeStrip);
+            this.UrlContainer.Panel2MinSize = 500;
             this.UrlContainer.Size = new System.Drawing.Size(1880, 584);
             this.UrlContainer.SplitterDistance = 1351;
             this.UrlContainer.TabIndex = 0;
@@ -166,13 +167,59 @@
             this.UrlDGView.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.UrlDGView_CurrentRowChanged);
             this.UrlDGView.Click += new System.EventHandler(this.UrlDGView_Click);
             // 
+            // ParametrsDGView
+            // 
+            this.ParametrsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParametrsDGView.Location = new System.Drawing.Point(0, 0);
+            // 
+            // 
+            // 
+            this.ParametrsDGView.MasterTemplate.AllowAddNewRow = false;
+            this.ParametrsDGView.MasterTemplate.AllowCellContextMenu = false;
+            this.ParametrsDGView.MasterTemplate.AllowColumnChooser = false;
+            this.ParametrsDGView.MasterTemplate.AllowColumnHeaderContextMenu = false;
+            this.ParametrsDGView.MasterTemplate.AllowColumnReorder = false;
+            this.ParametrsDGView.MasterTemplate.AllowDeleteRow = false;
+            this.ParametrsDGView.MasterTemplate.AllowDragToGroup = false;
+            this.ParametrsDGView.MasterTemplate.AllowRowHeaderContextMenu = false;
+            this.ParametrsDGView.MasterTemplate.AllowRowResize = false;
+            this.ParametrsDGView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            gridViewTextBoxColumn1.HeaderText = "Параметр";
+            gridViewTextBoxColumn1.Name = "ParametrColumn";
+            gridViewTextBoxColumn1.Width = 123;
+            gridViewTextBoxColumn2.HeaderText = "Значение";
+            gridViewTextBoxColumn2.Name = "ValueColumn";
+            gridViewTextBoxColumn2.Width = 378;
+            this.ParametrsDGView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2});
+            this.ParametrsDGView.MasterTemplate.ShowFilteringRow = false;
+            this.ParametrsDGView.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.ParametrsDGView.Name = "ParametrsDGView";
+            this.ParametrsDGView.ShowCellErrors = false;
+            this.ParametrsDGView.ShowGroupPanel = false;
+            this.ParametrsDGView.ShowGroupPanelScrollbars = false;
+            this.ParametrsDGView.ShowItemToolTips = false;
+            this.ParametrsDGView.ShowNoDataText = false;
+            this.ParametrsDGView.ShowRowErrors = false;
+            this.ParametrsDGView.Size = new System.Drawing.Size(523, 339);
+            this.ParametrsDGView.TabIndex = 2;
+            this.ParametrsDGView.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.ParametrsDGView_CellValueChanged);
+            // 
+            // VcfTBox
+            // 
+            this.VcfTBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.VcfTBox.Location = new System.Drawing.Point(0, 339);
+            this.VcfTBox.Name = "VcfTBox";
+            this.VcfTBox.ReadOnly = true;
+            this.VcfTBox.Size = new System.Drawing.Size(523, 219);
+            this.VcfTBox.TabIndex = 1;
+            this.VcfTBox.Text = "";
+            this.VcfTBox.TextChanged += new System.EventHandler(this.VcfTBox_TextChanged);
+            // 
             // SizeStrip
             // 
             this.SizeStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UrlSizeLbl,
-            this.UrlSizeValue,
-            this.VCardSizeLbl,
-            this.VCardSizeValue,
             this.SumSizeLbl,
             this.SumSizeValue,
             this.MaxSizeLbl,
@@ -184,46 +231,6 @@
             this.SizeStrip.TabIndex = 0;
             this.SizeStrip.Text = "statusStrip1";
             // 
-            // UrlSizeLbl
-            // 
-            this.UrlSizeLbl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.UrlSizeLbl.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.UrlSizeLbl.Name = "UrlSizeLbl";
-            this.UrlSizeLbl.Size = new System.Drawing.Size(69, 19);
-            this.UrlSizeLbl.Text = "Размер Url";
-            // 
-            // UrlSizeValue
-            // 
-            this.UrlSizeValue.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.UrlSizeValue.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.UrlSizeValue.Name = "UrlSizeValue";
-            this.UrlSizeValue.Size = new System.Drawing.Size(17, 19);
-            this.UrlSizeValue.Text = "0";
-            // 
-            // VCardSizeLbl
-            // 
-            this.VCardSizeLbl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.VCardSizeLbl.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.VCardSizeLbl.Name = "VCardSizeLbl";
-            this.VCardSizeLbl.Size = new System.Drawing.Size(86, 19);
-            this.VCardSizeLbl.Text = "Размер VCard";
-            // 
-            // VCardSizeValue
-            // 
-            this.VCardSizeValue.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.VCardSizeValue.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.VCardSizeValue.Name = "VCardSizeValue";
-            this.VCardSizeValue.Size = new System.Drawing.Size(17, 19);
-            this.VCardSizeValue.Text = "0";
-            // 
             // SumSizeLbl
             // 
             this.SumSizeLbl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
@@ -231,8 +238,8 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.SumSizeLbl.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.SumSizeLbl.Name = "SumSizeLbl";
-            this.SumSizeLbl.Size = new System.Drawing.Size(95, 19);
-            this.SumSizeLbl.Text = "Общий размер";
+            this.SumSizeLbl.Size = new System.Drawing.Size(178, 19);
+            this.SumSizeLbl.Text = "Размер записываемых данных";
             // 
             // SumSizeValue
             // 
@@ -264,6 +271,158 @@
             this.MaxSizeValue.Size = new System.Drawing.Size(29, 19);
             this.MaxSizeValue.Text = "716";
             // 
+            // LogTBox
+            // 
+            this.LogTBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogTBox.Location = new System.Drawing.Point(0, 0);
+            this.LogTBox.Name = "LogTBox";
+            this.LogTBox.ReadOnly = true;
+            this.LogTBox.Size = new System.Drawing.Size(1603, 327);
+            this.LogTBox.TabIndex = 1;
+            this.LogTBox.Text = "";
+            this.LogTBox.TextChanged += new System.EventHandler(this.LogTBox_TextChanged);
+            // 
+            // SettingsGBox
+            // 
+            this.SettingsGBox.Controls.Add(this.WriteBtn);
+            this.SettingsGBox.Controls.Add(this.FormatBtn);
+            this.SettingsGBox.Controls.Add(this.DataSettingsGBox);
+            this.SettingsGBox.Controls.Add(this.WriteSettingsGBox);
+            this.SettingsGBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.SettingsGBox.Location = new System.Drawing.Point(1603, 0);
+            this.SettingsGBox.Name = "SettingsGBox";
+            this.SettingsGBox.Size = new System.Drawing.Size(275, 327);
+            this.SettingsGBox.TabIndex = 0;
+            this.SettingsGBox.TabStop = false;
+            this.SettingsGBox.Text = "Настройки";
+            // 
+            // WriteBtn
+            // 
+            this.WriteBtn.Enabled = false;
+            this.WriteBtn.Location = new System.Drawing.Point(7, 290);
+            this.WriteBtn.Name = "WriteBtn";
+            this.WriteBtn.Size = new System.Drawing.Size(265, 23);
+            this.WriteBtn.TabIndex = 3;
+            this.WriteBtn.Text = "Записать данные ";
+            this.WriteBtn.UseVisualStyleBackColor = true;
+            this.WriteBtn.Click += new System.EventHandler(this.WriteBtn_Click);
+            // 
+            // FormatBtn
+            // 
+            this.FormatBtn.Location = new System.Drawing.Point(7, 261);
+            this.FormatBtn.Name = "FormatBtn";
+            this.FormatBtn.Size = new System.Drawing.Size(265, 23);
+            this.FormatBtn.TabIndex = 2;
+            this.FormatBtn.Text = "Форматировать карту";
+            this.FormatBtn.UseVisualStyleBackColor = true;
+            this.FormatBtn.Click += new System.EventHandler(this.FormatBtn_Click);
+            // 
+            // DataSettingsGBox
+            // 
+            this.DataSettingsGBox.Controls.Add(this.CardBeforeUrl);
+            this.DataSettingsGBox.Controls.Add(this.UrlBeforeCardBtn);
+            this.DataSettingsGBox.Controls.Add(this.OnlyCardBtn);
+            this.DataSettingsGBox.Controls.Add(this.OnlyUrlBtn);
+            this.DataSettingsGBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DataSettingsGBox.Location = new System.Drawing.Point(3, 105);
+            this.DataSettingsGBox.Name = "DataSettingsGBox";
+            this.DataSettingsGBox.Size = new System.Drawing.Size(269, 112);
+            this.DataSettingsGBox.TabIndex = 1;
+            this.DataSettingsGBox.TabStop = false;
+            this.DataSettingsGBox.Text = "Данные для записи";
+            // 
+            // CardBeforeUrl
+            // 
+            this.CardBeforeUrl.AutoSize = true;
+            this.CardBeforeUrl.Enabled = false;
+            this.CardBeforeUrl.Location = new System.Drawing.Point(62, 89);
+            this.CardBeforeUrl.Name = "CardBeforeUrl";
+            this.CardBeforeUrl.Size = new System.Drawing.Size(73, 17);
+            this.CardBeforeUrl.TabIndex = 3;
+            this.CardBeforeUrl.Text = "VCard, Url";
+            this.CardBeforeUrl.UseVisualStyleBackColor = true;
+            this.CardBeforeUrl.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
+            // 
+            // UrlBeforeCardBtn
+            // 
+            this.UrlBeforeCardBtn.AutoSize = true;
+            this.UrlBeforeCardBtn.Enabled = false;
+            this.UrlBeforeCardBtn.Location = new System.Drawing.Point(62, 66);
+            this.UrlBeforeCardBtn.Name = "UrlBeforeCardBtn";
+            this.UrlBeforeCardBtn.Size = new System.Drawing.Size(73, 17);
+            this.UrlBeforeCardBtn.TabIndex = 2;
+            this.UrlBeforeCardBtn.Text = "Url, VCard";
+            this.UrlBeforeCardBtn.UseVisualStyleBackColor = true;
+            this.UrlBeforeCardBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
+            // 
+            // OnlyCardBtn
+            // 
+            this.OnlyCardBtn.AutoSize = true;
+            this.OnlyCardBtn.Enabled = false;
+            this.OnlyCardBtn.Location = new System.Drawing.Point(62, 43);
+            this.OnlyCardBtn.Name = "OnlyCardBtn";
+            this.OnlyCardBtn.Size = new System.Drawing.Size(94, 17);
+            this.OnlyCardBtn.TabIndex = 1;
+            this.OnlyCardBtn.Text = "Только VCard";
+            this.OnlyCardBtn.UseVisualStyleBackColor = true;
+            this.OnlyCardBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
+            // 
+            // OnlyUrlBtn
+            // 
+            this.OnlyUrlBtn.AutoSize = true;
+            this.OnlyUrlBtn.Checked = true;
+            this.OnlyUrlBtn.Location = new System.Drawing.Point(62, 20);
+            this.OnlyUrlBtn.Name = "OnlyUrlBtn";
+            this.OnlyUrlBtn.Size = new System.Drawing.Size(78, 17);
+            this.OnlyUrlBtn.TabIndex = 0;
+            this.OnlyUrlBtn.TabStop = true;
+            this.OnlyUrlBtn.Text = "Только Url";
+            this.OnlyUrlBtn.UseVisualStyleBackColor = true;
+            this.OnlyUrlBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
+            // 
+            // WriteSettingsGBox
+            // 
+            this.WriteSettingsGBox.Controls.Add(this.AutoincrementChBox);
+            this.WriteSettingsGBox.Controls.Add(this.CheckAfterWriteChBox);
+            this.WriteSettingsGBox.Controls.Add(this.AuthomaticWriteChBox);
+            this.WriteSettingsGBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.WriteSettingsGBox.Location = new System.Drawing.Point(3, 16);
+            this.WriteSettingsGBox.Name = "WriteSettingsGBox";
+            this.WriteSettingsGBox.Size = new System.Drawing.Size(269, 89);
+            this.WriteSettingsGBox.TabIndex = 0;
+            this.WriteSettingsGBox.TabStop = false;
+            this.WriteSettingsGBox.Text = "Настройки записи";
+            // 
+            // AutoincrementChBox
+            // 
+            this.AutoincrementChBox.AutoSize = true;
+            this.AutoincrementChBox.Location = new System.Drawing.Point(63, 65);
+            this.AutoincrementChBox.Name = "AutoincrementChBox";
+            this.AutoincrementChBox.Size = new System.Drawing.Size(178, 17);
+            this.AutoincrementChBox.TabIndex = 2;
+            this.AutoincrementChBox.Text = "Переход к следующей записи";
+            this.AutoincrementChBox.UseVisualStyleBackColor = true;
+            // 
+            // CheckAfterWriteChBox
+            // 
+            this.CheckAfterWriteChBox.AutoSize = true;
+            this.CheckAfterWriteChBox.Location = new System.Drawing.Point(63, 42);
+            this.CheckAfterWriteChBox.Name = "CheckAfterWriteChBox";
+            this.CheckAfterWriteChBox.Size = new System.Drawing.Size(194, 17);
+            this.CheckAfterWriteChBox.TabIndex = 1;
+            this.CheckAfterWriteChBox.Text = "Проверять данные после записи";
+            this.CheckAfterWriteChBox.UseVisualStyleBackColor = true;
+            // 
+            // AuthomaticWriteChBox
+            // 
+            this.AuthomaticWriteChBox.AutoSize = true;
+            this.AuthomaticWriteChBox.Location = new System.Drawing.Point(63, 19);
+            this.AuthomaticWriteChBox.Name = "AuthomaticWriteChBox";
+            this.AuthomaticWriteChBox.Size = new System.Drawing.Size(149, 17);
+            this.AuthomaticWriteChBox.TabIndex = 0;
+            this.AuthomaticWriteChBox.Text = "Автоматическая запись";
+            this.AuthomaticWriteChBox.UseVisualStyleBackColor = true;
+            // 
             // StatusLbl
             // 
             this.StatusLbl.Image = global::MagentaSoft.Properties.Resources.ok;
@@ -284,7 +443,7 @@
             // 
             this.OpenFileItem.Image = global::MagentaSoft.Properties.Resources.AddingForm;
             this.OpenFileItem.Name = "OpenFileItem";
-            this.OpenFileItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenFileItem.Size = new System.Drawing.Size(153, 22);
             this.OpenFileItem.Text = "Открыть файл";
             this.OpenFileItem.Click += new System.EventHandler(this.OpenFileItem_Click);
             // 
@@ -292,210 +451,31 @@
             // 
             this.ClearDbItem.Image = global::MagentaSoft.Properties.Resources.data_delete;
             this.ClearDbItem.Name = "ClearDbItem";
-            this.ClearDbItem.Size = new System.Drawing.Size(180, 22);
+            this.ClearDbItem.Size = new System.Drawing.Size(153, 22);
             this.ClearDbItem.Text = "Очистить БД";
             this.ClearDbItem.Click += new System.EventHandler(this.ClearDbItem_Click);
             // 
-            // VcfTBox
+            // AddCardPanel
             // 
-            this.VcfTBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.VcfTBox.Location = new System.Drawing.Point(0, 339);
-            this.VcfTBox.Name = "VcfTBox";
-            this.VcfTBox.ReadOnly = true;
-            this.VcfTBox.Size = new System.Drawing.Size(523, 219);
-            this.VcfTBox.TabIndex = 1;
-            this.VcfTBox.Text = "";
+            this.AddCardPanel.BackgroundImage = global::MagentaSoft.Properties.Resources.photo_2021_08_23_14_18_34;
+            this.AddCardPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddCardPanel.Controls.Add(this.CloseBtn);
+            this.AddCardPanel.Location = new System.Drawing.Point(35, 356);
+            this.AddCardPanel.Name = "AddCardPanel";
+            this.AddCardPanel.Size = new System.Drawing.Size(428, 186);
+            this.AddCardPanel.TabIndex = 1;
+            this.AddCardPanel.Visible = false;
             // 
-            // ParametrsDGView
+            // CloseBtn
             // 
-            this.ParametrsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ParametrsDGView.Location = new System.Drawing.Point(0, 0);
-            // 
-            // 
-            // 
-            this.ParametrsDGView.MasterTemplate.AllowAddNewRow = false;
-            this.ParametrsDGView.MasterTemplate.AllowCellContextMenu = false;
-            this.ParametrsDGView.MasterTemplate.AllowColumnChooser = false;
-            this.ParametrsDGView.MasterTemplate.AllowColumnHeaderContextMenu = false;
-            this.ParametrsDGView.MasterTemplate.AllowColumnReorder = false;
-            this.ParametrsDGView.MasterTemplate.AllowDeleteRow = false;
-            this.ParametrsDGView.MasterTemplate.AllowDragToGroup = false;
-            this.ParametrsDGView.MasterTemplate.AllowRowHeaderContextMenu = false;
-            this.ParametrsDGView.MasterTemplate.AllowRowResize = false;
-            this.ParametrsDGView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn1.HeaderText = "Параметр";
-            gridViewTextBoxColumn1.Name = "ParametrColumn";
-            gridViewTextBoxColumn1.Width = 123;
-            gridViewTextBoxColumn2.HeaderText = "Значение";
-            gridViewTextBoxColumn2.Name = "ValueColumn";
-            gridViewTextBoxColumn2.Width = 380;
-            this.ParametrsDGView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2});
-            this.ParametrsDGView.MasterTemplate.ShowFilteringRow = false;
-            this.ParametrsDGView.MasterTemplate.ViewDefinition = tableViewDefinition2;
-            this.ParametrsDGView.Name = "ParametrsDGView";
-            this.ParametrsDGView.ShowCellErrors = false;
-            this.ParametrsDGView.ShowGroupPanel = false;
-            this.ParametrsDGView.ShowGroupPanelScrollbars = false;
-            this.ParametrsDGView.ShowItemToolTips = false;
-            this.ParametrsDGView.ShowNoDataText = false;
-            this.ParametrsDGView.ShowRowErrors = false;
-            this.ParametrsDGView.Size = new System.Drawing.Size(523, 339);
-            this.ParametrsDGView.TabIndex = 2;
-            this.ParametrsDGView.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.ParametrsDGView_CellValueChanged);
-            // 
-            // SettingsGBox
-            // 
-            this.SettingsGBox.Controls.Add(this.WriteBtn);
-            this.SettingsGBox.Controls.Add(this.FormatBtn);
-            this.SettingsGBox.Controls.Add(this.DataSettingsGBox);
-            this.SettingsGBox.Controls.Add(this.WriteSettingsGBox);
-            this.SettingsGBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SettingsGBox.Location = new System.Drawing.Point(1603, 0);
-            this.SettingsGBox.Name = "SettingsGBox";
-            this.SettingsGBox.Size = new System.Drawing.Size(275, 327);
-            this.SettingsGBox.TabIndex = 0;
-            this.SettingsGBox.TabStop = false;
-            this.SettingsGBox.Text = "Настройки";
-            // 
-            // WriteSettingsGBox
-            // 
-            this.WriteSettingsGBox.Controls.Add(this.AutoincrementChBox);
-            this.WriteSettingsGBox.Controls.Add(this.CheckAfterWriteChBox);
-            this.WriteSettingsGBox.Controls.Add(this.AuthomaticWriteChBox);
-            this.WriteSettingsGBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WriteSettingsGBox.Location = new System.Drawing.Point(3, 16);
-            this.WriteSettingsGBox.Name = "WriteSettingsGBox";
-            this.WriteSettingsGBox.Size = new System.Drawing.Size(269, 89);
-            this.WriteSettingsGBox.TabIndex = 0;
-            this.WriteSettingsGBox.TabStop = false;
-            this.WriteSettingsGBox.Text = "Настройки записи";
-            // 
-            // AuthomaticWriteChBox
-            // 
-            this.AuthomaticWriteChBox.AutoSize = true;
-            this.AuthomaticWriteChBox.Location = new System.Drawing.Point(63, 19);
-            this.AuthomaticWriteChBox.Name = "AuthomaticWriteChBox";
-            this.AuthomaticWriteChBox.Size = new System.Drawing.Size(149, 17);
-            this.AuthomaticWriteChBox.TabIndex = 0;
-            this.AuthomaticWriteChBox.Text = "Автоматическая запись";
-            this.AuthomaticWriteChBox.UseVisualStyleBackColor = true;
-            // 
-            // CheckAfterWriteChBox
-            // 
-            this.CheckAfterWriteChBox.AutoSize = true;
-            this.CheckAfterWriteChBox.Location = new System.Drawing.Point(63, 42);
-            this.CheckAfterWriteChBox.Name = "CheckAfterWriteChBox";
-            this.CheckAfterWriteChBox.Size = new System.Drawing.Size(194, 17);
-            this.CheckAfterWriteChBox.TabIndex = 1;
-            this.CheckAfterWriteChBox.Text = "Проверять данные после записи";
-            this.CheckAfterWriteChBox.UseVisualStyleBackColor = true;
-            // 
-            // AutoincrementChBox
-            // 
-            this.AutoincrementChBox.AutoSize = true;
-            this.AutoincrementChBox.Location = new System.Drawing.Point(63, 65);
-            this.AutoincrementChBox.Name = "AutoincrementChBox";
-            this.AutoincrementChBox.Size = new System.Drawing.Size(178, 17);
-            this.AutoincrementChBox.TabIndex = 2;
-            this.AutoincrementChBox.Text = "Переход к следующей записи";
-            this.AutoincrementChBox.UseVisualStyleBackColor = true;
-            // 
-            // DataSettingsGBox
-            // 
-            this.DataSettingsGBox.Controls.Add(this.CardBeforeUrl);
-            this.DataSettingsGBox.Controls.Add(this.UrlBeforeCardBtn);
-            this.DataSettingsGBox.Controls.Add(this.OnlyCardBtn);
-            this.DataSettingsGBox.Controls.Add(this.OnlyUrlBtn);
-            this.DataSettingsGBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DataSettingsGBox.Location = new System.Drawing.Point(3, 105);
-            this.DataSettingsGBox.Name = "DataSettingsGBox";
-            this.DataSettingsGBox.Size = new System.Drawing.Size(269, 112);
-            this.DataSettingsGBox.TabIndex = 1;
-            this.DataSettingsGBox.TabStop = false;
-            this.DataSettingsGBox.Text = "Данные для записи";
-            // 
-            // OnlyUrlBtn
-            // 
-            this.OnlyUrlBtn.AutoSize = true;
-            this.OnlyUrlBtn.Location = new System.Drawing.Point(62, 20);
-            this.OnlyUrlBtn.Name = "OnlyUrlBtn";
-            this.OnlyUrlBtn.Size = new System.Drawing.Size(78, 17);
-            this.OnlyUrlBtn.TabIndex = 0;
-            this.OnlyUrlBtn.TabStop = true;
-            this.OnlyUrlBtn.Text = "Только Url";
-            this.OnlyUrlBtn.UseVisualStyleBackColor = true;
-            this.OnlyUrlBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
-            // 
-            // OnlyCardBtn
-            // 
-            this.OnlyCardBtn.AutoSize = true;
-            this.OnlyCardBtn.Enabled = false;
-            this.OnlyCardBtn.Location = new System.Drawing.Point(62, 43);
-            this.OnlyCardBtn.Name = "OnlyCardBtn";
-            this.OnlyCardBtn.Size = new System.Drawing.Size(94, 17);
-            this.OnlyCardBtn.TabIndex = 1;
-            this.OnlyCardBtn.TabStop = true;
-            this.OnlyCardBtn.Text = "Только VCard";
-            this.OnlyCardBtn.UseVisualStyleBackColor = true;
-            this.OnlyCardBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
-            // 
-            // UrlBeforeCardBtn
-            // 
-            this.UrlBeforeCardBtn.AutoSize = true;
-            this.UrlBeforeCardBtn.Enabled = false;
-            this.UrlBeforeCardBtn.Location = new System.Drawing.Point(62, 66);
-            this.UrlBeforeCardBtn.Name = "UrlBeforeCardBtn";
-            this.UrlBeforeCardBtn.Size = new System.Drawing.Size(73, 17);
-            this.UrlBeforeCardBtn.TabIndex = 2;
-            this.UrlBeforeCardBtn.TabStop = true;
-            this.UrlBeforeCardBtn.Text = "Url, VCard";
-            this.UrlBeforeCardBtn.UseVisualStyleBackColor = true;
-            this.UrlBeforeCardBtn.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
-            // 
-            // CardBeforeUrl
-            // 
-            this.CardBeforeUrl.AutoSize = true;
-            this.CardBeforeUrl.Enabled = false;
-            this.CardBeforeUrl.Location = new System.Drawing.Point(62, 89);
-            this.CardBeforeUrl.Name = "CardBeforeUrl";
-            this.CardBeforeUrl.Size = new System.Drawing.Size(73, 17);
-            this.CardBeforeUrl.TabIndex = 3;
-            this.CardBeforeUrl.TabStop = true;
-            this.CardBeforeUrl.Text = "VCard, Url";
-            this.CardBeforeUrl.UseVisualStyleBackColor = true;
-            this.CardBeforeUrl.CheckedChanged += new System.EventHandler(this.OnlyUrlBtn_CheckedChanged);
-            // 
-            // FormatBtn
-            // 
-            this.FormatBtn.Location = new System.Drawing.Point(7, 261);
-            this.FormatBtn.Name = "FormatBtn";
-            this.FormatBtn.Size = new System.Drawing.Size(265, 23);
-            this.FormatBtn.TabIndex = 2;
-            this.FormatBtn.Text = "Форматировать карту";
-            this.FormatBtn.UseVisualStyleBackColor = true;
-            // 
-            // WriteBtn
-            // 
-            this.WriteBtn.Enabled = false;
-            this.WriteBtn.Location = new System.Drawing.Point(7, 290);
-            this.WriteBtn.Name = "WriteBtn";
-            this.WriteBtn.Size = new System.Drawing.Size(265, 23);
-            this.WriteBtn.TabIndex = 3;
-            this.WriteBtn.Text = "Записать данные ";
-            this.WriteBtn.UseVisualStyleBackColor = true;
-            // 
-            // LogTBox
-            // 
-            this.LogTBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogTBox.Location = new System.Drawing.Point(0, 0);
-            this.LogTBox.Name = "LogTBox";
-            this.LogTBox.ReadOnly = true;
-            this.LogTBox.Size = new System.Drawing.Size(1603, 327);
-            this.LogTBox.TabIndex = 1;
-            this.LogTBox.Text = "";
-            this.LogTBox.TextChanged += new System.EventHandler(this.LogTBox_TextChanged);
+            this.CloseBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CloseBtn.Location = new System.Drawing.Point(0, 163);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(428, 23);
+            this.CloseBtn.TabIndex = 0;
+            this.CloseBtn.Text = "Отменить запись";
+            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // MainForm
             // 
@@ -507,6 +487,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Magenta";
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.MainContainer.Panel1.ResumeLayout(false);
@@ -520,15 +501,16 @@
             this.UrlContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView)).EndInit();
-            this.SizeStrip.ResumeLayout(false);
-            this.SizeStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView)).EndInit();
+            this.SizeStrip.ResumeLayout(false);
+            this.SizeStrip.PerformLayout();
             this.SettingsGBox.ResumeLayout(false);
-            this.WriteSettingsGBox.ResumeLayout(false);
-            this.WriteSettingsGBox.PerformLayout();
             this.DataSettingsGBox.ResumeLayout(false);
             this.DataSettingsGBox.PerformLayout();
+            this.WriteSettingsGBox.ResumeLayout(false);
+            this.WriteSettingsGBox.PerformLayout();
+            this.AddCardPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,10 +526,6 @@
         private System.Windows.Forms.SplitContainer UrlContainer;
         private Telerik.WinControls.UI.RadGridView UrlDGView;
         private System.Windows.Forms.StatusStrip SizeStrip;
-        private System.Windows.Forms.ToolStripStatusLabel UrlSizeLbl;
-        private System.Windows.Forms.ToolStripStatusLabel UrlSizeValue;
-        private System.Windows.Forms.ToolStripStatusLabel VCardSizeLbl;
-        private System.Windows.Forms.ToolStripStatusLabel VCardSizeValue;
         private System.Windows.Forms.ToolStripStatusLabel SumSizeLbl;
         private System.Windows.Forms.ToolStripStatusLabel SumSizeValue;
         private System.Windows.Forms.ToolStripStatusLabel MaxSizeLbl;
@@ -568,6 +546,8 @@
         private System.Windows.Forms.CheckBox AutoincrementChBox;
         private System.Windows.Forms.CheckBox CheckAfterWriteChBox;
         private System.Windows.Forms.CheckBox AuthomaticWriteChBox;
+        private System.Windows.Forms.Panel AddCardPanel;
+        private System.Windows.Forms.Button CloseBtn;
     }
 }
 
