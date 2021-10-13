@@ -117,11 +117,11 @@ namespace MagentaSoft.Classes
             try
             {
                 _port.Open();
-                message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
+               // message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
                 _port.Write("AT+SCAN0\r");
-                message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
+               // message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
                 _port.Write("AT+W1:140103E103E103E103E103E103E103E1\r");
-                Thread.Sleep(50);
+                //Thread.Sleep(50);
                 message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
                 if (message.ToLower().Contains("error"))
                 {
@@ -167,7 +167,7 @@ namespace MagentaSoft.Classes
 
         public string  WriteData(string data)
         {
-            IsDeviceEnabled();
+            //IsDeviceEnabled();
             string message = "error";
             try
             {
@@ -175,8 +175,8 @@ namespace MagentaSoft.Classes
                 message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
                 _port.Write("AT+SCAN0\r");
                 message = _port.ReadExisting().Replace("\r\n", "\r").Trim('\n');
-                _port.Write("AT+KAD3F7D3F7D3F7\r");
-                _port.Write("AT+KBFFFFFFFFFFFF\r");
+                //_port.Write("AT+KAD3F7D3F7D3F7\r");
+                //_port.Write("AT+KBFFFFFFFFFFFF\r");
                 message = _port.ReadExisting();
                 int i = 0;
                 int block = 4;
@@ -193,6 +193,7 @@ namespace MagentaSoft.Classes
             }
             catch
             {
+                int a = 0;
                 //ignored
             }
             finally
@@ -206,7 +207,18 @@ namespace MagentaSoft.Classes
             return "Данные записаны на карту";
         }
 
-
+        public void SetScan0()
+        {
+            _port.Open();
+            _port.Write("AT+SCAN0\r");
+            _port.Close();
+        }
+        public void SetScan1()
+        {
+            _port.Open();
+            _port.Write("AT+SCAN1\r");
+            _port.Close();
+        }
 
         private void IsDeviceEnabled()
         {

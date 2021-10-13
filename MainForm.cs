@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using MagentaSoft.Classes;
 using MagentaSoft.Classes.Model;
@@ -12,6 +14,7 @@ namespace MagentaSoft
         public DataFile File;
         public MyData Data;
         public Device Device;
+        private bool GlobalFlag;
 
 
         public MainForm()
@@ -210,8 +213,9 @@ namespace MagentaSoft
 
         private void WriteBtn_Click(object sender, EventArgs e)
         {
+            GlobalFlag = true;
             bool writeEnabled = WriteBtn.Enabled;
-            while (true)
+            while (GlobalFlag)
             {
                 if (Data != null)
                 {
@@ -242,6 +246,8 @@ namespace MagentaSoft
                                 if (message.Contains("ошибки"))
                                     for (int i = 0; i < 50; i++)
                                     {
+                                        Device.SetScan1();
+                                        Thread.Sleep(100);
                                         message = Device?.WriteData(data);
                                         if (!message.Contains("ошибки"))
                                             break;
@@ -304,6 +310,7 @@ namespace MagentaSoft
                     break;
                 }
             }
+           
             WriteBtn.Enabled = writeEnabled;
             FormatBtn.Enabled = true;
 
@@ -321,6 +328,12 @@ namespace MagentaSoft
             {
                 OnlyCardBtn.Enabled = CardBeforeUrl.Enabled = UrlBeforeCardBtn.Enabled = true;
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Device.DetectCardFlag = false;
+            GlobalFlag = false;
         }
     }
 }

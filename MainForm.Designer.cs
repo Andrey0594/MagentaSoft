@@ -34,9 +34,14 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.FileItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenFileItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearDbItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.UrlContainer = new System.Windows.Forms.SplitContainer();
             this.UrlDGView = new Telerik.WinControls.UI.RadGridView();
+            this.AddCardPanel = new System.Windows.Forms.Panel();
+            this.CloseBtn = new System.Windows.Forms.Button();
             this.ParametrsDGView = new Telerik.WinControls.UI.RadGridView();
             this.VcfTBox = new System.Windows.Forms.RichTextBox();
             this.SizeStrip = new System.Windows.Forms.StatusStrip();
@@ -44,6 +49,7 @@
             this.SumSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.MaxSizeLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.MaxSizeValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.LogTBox = new System.Windows.Forms.RichTextBox();
             this.SettingsGBox = new System.Windows.Forms.GroupBox();
             this.WriteBtn = new System.Windows.Forms.Button();
@@ -57,12 +63,6 @@
             this.AutoincrementChBox = new System.Windows.Forms.CheckBox();
             this.CheckAfterWriteChBox = new System.Windows.Forms.CheckBox();
             this.AuthomaticWriteChBox = new System.Windows.Forms.CheckBox();
-            this.StatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.FileItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenFileItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ClearDbItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddCardPanel = new System.Windows.Forms.Panel();
-            this.CloseBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
@@ -74,13 +74,13 @@
             this.UrlContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView.MasterTemplate)).BeginInit();
+            this.AddCardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView.MasterTemplate)).BeginInit();
             this.SizeStrip.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             this.DataSettingsGBox.SuspendLayout();
             this.WriteSettingsGBox.SuspendLayout();
-            this.AddCardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,6 +92,32 @@
             this.menuStrip1.Size = new System.Drawing.Size(1880, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // FileItem
+            // 
+            this.FileItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenFileItem,
+            this.ClearDbItem});
+            this.FileItem.Image = global::MagentaSoft.Properties.Resources.document_plain;
+            this.FileItem.Name = "FileItem";
+            this.FileItem.Size = new System.Drawing.Size(64, 20);
+            this.FileItem.Text = "Файл";
+            // 
+            // OpenFileItem
+            // 
+            this.OpenFileItem.Image = global::MagentaSoft.Properties.Resources.AddingForm;
+            this.OpenFileItem.Name = "OpenFileItem";
+            this.OpenFileItem.Size = new System.Drawing.Size(153, 22);
+            this.OpenFileItem.Text = "Открыть файл";
+            this.OpenFileItem.Click += new System.EventHandler(this.OpenFileItem_Click);
+            // 
+            // ClearDbItem
+            // 
+            this.ClearDbItem.Image = global::MagentaSoft.Properties.Resources.data_delete;
+            this.ClearDbItem.Name = "ClearDbItem";
+            this.ClearDbItem.Size = new System.Drawing.Size(153, 22);
+            this.ClearDbItem.Text = "Очистить БД";
+            this.ClearDbItem.Click += new System.EventHandler(this.ClearDbItem_Click);
             // 
             // MainContainer
             // 
@@ -167,6 +193,28 @@
             this.UrlDGView.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.UrlDGView_CurrentRowChanged);
             this.UrlDGView.Click += new System.EventHandler(this.UrlDGView_Click);
             // 
+            // AddCardPanel
+            // 
+            this.AddCardPanel.BackgroundImage = global::MagentaSoft.Properties.Resources.photo_2021_08_23_14_18_34;
+            this.AddCardPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddCardPanel.Controls.Add(this.CloseBtn);
+            this.AddCardPanel.Location = new System.Drawing.Point(35, 356);
+            this.AddCardPanel.Name = "AddCardPanel";
+            this.AddCardPanel.Size = new System.Drawing.Size(428, 186);
+            this.AddCardPanel.TabIndex = 1;
+            this.AddCardPanel.Visible = false;
+            // 
+            // CloseBtn
+            // 
+            this.CloseBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CloseBtn.Location = new System.Drawing.Point(0, 163);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(428, 23);
+            this.CloseBtn.TabIndex = 0;
+            this.CloseBtn.Text = "Отменить запись";
+            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
             // ParametrsDGView
             // 
             this.ParametrsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -189,7 +237,7 @@
             gridViewTextBoxColumn1.Width = 123;
             gridViewTextBoxColumn2.HeaderText = "Значение";
             gridViewTextBoxColumn2.Name = "ValueColumn";
-            gridViewTextBoxColumn2.Width = 378;
+            gridViewTextBoxColumn2.Width = 380;
             this.ParametrsDGView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2});
@@ -270,6 +318,12 @@
             this.MaxSizeValue.Name = "MaxSizeValue";
             this.MaxSizeValue.Size = new System.Drawing.Size(29, 19);
             this.MaxSizeValue.Text = "716";
+            // 
+            // StatusLbl
+            // 
+            this.StatusLbl.Image = global::MagentaSoft.Properties.Resources.ok;
+            this.StatusLbl.Name = "StatusLbl";
+            this.StatusLbl.Size = new System.Drawing.Size(16, 19);
             // 
             // LogTBox
             // 
@@ -423,60 +477,6 @@
             this.AuthomaticWriteChBox.Text = "Автоматическая запись";
             this.AuthomaticWriteChBox.UseVisualStyleBackColor = true;
             // 
-            // StatusLbl
-            // 
-            this.StatusLbl.Image = global::MagentaSoft.Properties.Resources.ok;
-            this.StatusLbl.Name = "StatusLbl";
-            this.StatusLbl.Size = new System.Drawing.Size(16, 19);
-            // 
-            // FileItem
-            // 
-            this.FileItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenFileItem,
-            this.ClearDbItem});
-            this.FileItem.Image = global::MagentaSoft.Properties.Resources.document_plain;
-            this.FileItem.Name = "FileItem";
-            this.FileItem.Size = new System.Drawing.Size(64, 20);
-            this.FileItem.Text = "Файл";
-            // 
-            // OpenFileItem
-            // 
-            this.OpenFileItem.Image = global::MagentaSoft.Properties.Resources.AddingForm;
-            this.OpenFileItem.Name = "OpenFileItem";
-            this.OpenFileItem.Size = new System.Drawing.Size(153, 22);
-            this.OpenFileItem.Text = "Открыть файл";
-            this.OpenFileItem.Click += new System.EventHandler(this.OpenFileItem_Click);
-            // 
-            // ClearDbItem
-            // 
-            this.ClearDbItem.Image = global::MagentaSoft.Properties.Resources.data_delete;
-            this.ClearDbItem.Name = "ClearDbItem";
-            this.ClearDbItem.Size = new System.Drawing.Size(153, 22);
-            this.ClearDbItem.Text = "Очистить БД";
-            this.ClearDbItem.Click += new System.EventHandler(this.ClearDbItem_Click);
-            // 
-            // AddCardPanel
-            // 
-            this.AddCardPanel.BackgroundImage = global::MagentaSoft.Properties.Resources.photo_2021_08_23_14_18_34;
-            this.AddCardPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddCardPanel.Controls.Add(this.CloseBtn);
-            this.AddCardPanel.Location = new System.Drawing.Point(35, 356);
-            this.AddCardPanel.Name = "AddCardPanel";
-            this.AddCardPanel.Size = new System.Drawing.Size(428, 186);
-            this.AddCardPanel.TabIndex = 1;
-            this.AddCardPanel.Visible = false;
-            // 
-            // CloseBtn
-            // 
-            this.CloseBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CloseBtn.Location = new System.Drawing.Point(0, 163);
-            this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(428, 23);
-            this.CloseBtn.TabIndex = 0;
-            this.CloseBtn.Text = "Отменить запись";
-            this.CloseBtn.UseVisualStyleBackColor = true;
-            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +487,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Magenta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -501,6 +502,7 @@
             this.UrlContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrlDGView)).EndInit();
+            this.AddCardPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParametrsDGView)).EndInit();
             this.SizeStrip.ResumeLayout(false);
@@ -510,7 +512,6 @@
             this.DataSettingsGBox.PerformLayout();
             this.WriteSettingsGBox.ResumeLayout(false);
             this.WriteSettingsGBox.PerformLayout();
-            this.AddCardPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
